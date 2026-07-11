@@ -34,6 +34,13 @@ and `recursPredict.R` are unmodified files from the EpiFilter package:
 > Computational Biology* 17(9): e1009347.
 > https://github.com/kpzoo/EpiFilter
 
+`core/recursPredictExt.R` is a modified version of `recursPredict.R`
+(same source above): the original hardcodes its internal prediction
+grid to 800 and throws `"Epidemic size too large"` on any outbreak
+whose predicted incidence exceeds ~720. This version takes the grid's
+upper bound as a parameter instead, computed automatically from your
+data's peak incidence in `run_rtforecast.R`.
+
 **Generation-interval discretization** - `core/computeLambda.R`
 computes the renewal-equation "total infectiousness" term EpiFilter
 needs, using a Gamma(mean, variance) discretization. This follows the
@@ -99,11 +106,14 @@ RtForecastR/
 ├── LICENSE                          (inherited from EpiFilter)
 ├── run_rtforecast.R                 (main script)
 ├── examples/
-│   └── measles_cdmx_example.txt     (worked example dataset)
+│   ├── measles_cdmx_example.txt     (worked example dataset)
+│   └── jalisco_example.txt          (larger-outbreak example dataset)
 └── core/
     ├── epiFilter.R                  (Parag et al., unmodified)
     ├── epiSmoother.R                (Parag et al., unmodified)
     ├── recursPredict.R              (Parag et al., unmodified)
+    ├── recursPredictExt.R           (Subedi, modified from recursPredict.R
+    │                                  - configurable grid size)
     └── computeLambda.R              (Subedi, GI-convolution helper)
 ```
 
