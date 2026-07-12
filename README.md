@@ -1,5 +1,7 @@
 # RtForecastR
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rajsubediresearch/RtForecastR/blob/main/RtForecastR_walkthrough.ipynb)
+
 A lightweight R tool for real-time effective reproduction number (R_t)
 estimation and one-step-ahead forecasting from case-count time series.
 Disease-agnostic: works for any pathogen with a known generation
@@ -56,6 +58,17 @@ same convention used in `get_Rt.m`, part of the GrowthPredict toolbox:
 three-plot reporting layout, dataset/batch output organization) is
 original work by Raj Subedi, built on top of the above.
 
+## Tutorial
+
+The badge at the top opens **`RtForecastR_walkthrough.ipynb`** directly in
+Google Colab - a step-by-step walkthrough of the full analysis (filtering,
+smoothing, one-step-ahead prediction, forecasting, elimination
+probability), with the underlying equations and an interpretation
+written below every output. No local R installation needed; just click
+the badge, set the runtime to R (`Runtime > Change runtime type > R`),
+and run the cells top to bottom. Paste your own data into Step 1 to try
+it on a different dataset.
+
 ## Requirements
 
 ```r
@@ -104,6 +117,7 @@ Each batch folder contains:
 RtForecastR/
 ├── README.md
 ├── LICENSE                          (inherited from EpiFilter)
+├── RtForecastR_walkthrough.ipynb    (Colab tutorial)
 ├── run_rtforecast.R                 (main script)
 ├── examples/
 │   ├── measles_cdmx_example.txt     (worked example dataset)

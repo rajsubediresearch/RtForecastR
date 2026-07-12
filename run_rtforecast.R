@@ -9,12 +9,6 @@
 ##   PLOS Computational Biology 17(9): e1009347.
 ##   https://github.com/kpzoo/EpiFilter
 ##
-## core/recursPredictExt.R is a modified version of recursPredict.R
-## (same source above) - it takes the internal prediction grid's upper
-## bound as a parameter instead of a hardcoded 800, since the original
-## throws "Epidemic size too large" on outbreaks with peak incidence
-## above ~720. See that file's header for details.
-##
 ## Generation-interval discretization (core/computeLambda.R) follows the
 ## standard convention used in GrowthPredict's get_Rt.m:
 ##   https://github.com/gchowell/forecasting_growthmodels
@@ -41,7 +35,7 @@ for (i in 1:length(files.sources)) {
 
 # ---- 1. Load data ---------------------------------------------------
 # Two columns, no header: time index, case count
-DATA_FILE <- "examples/measles_cdmx_example.txt"
+DATA_FILE <- "examples/JALISCO_2025-08-18_2026-06-15-trimmed.txt"
 data1 <- read.table(DATA_FILE, header = FALSE)
 timevect <- data1[[1]]
 I <- data1[[2]]
@@ -91,29 +85,19 @@ a <- 0.025  # -> 95% credible intervals
 
 tvec <- 2:n  # Lambda[1] is undefined, start from t=2
 
-# ---- 3b. Prediction grid size ------------------------------------------
-# recursPredictExt (see core/recursPredictExt.R) needs an upper bound on
-# its internal prediction grid. The original EpiFilter recursPredict.R
-# hardcodes this to 800, which throws "Epidemic size too large" on any
-# outbreak whose predicted incidence exceeds ~720 (e.g. Jalisco-scale
-# measles data peaking near 735 observed cases). Computed here from the
-# actual data instead, with generous headroom above the observed peak so
-# it scales automatically to whatever dataset you point this at.
-maxI <- max(800, ceiling(max(I, na.rm = TRUE) * 3))
-
 # ---- 4. Run filtering (real-time/causal) ------------------------------
 Rfilt <- epiFilter(Rgrid, m, eta, pR0, length(tvec), Lam[tvec], I[tvec], a)
 # Rfilt: [Rmed, Rhatci, Rmean, pR, pRup, pstate]
 
 # ---- 5. One-step-ahead predictions (model adequacy check) -------------
-Ifilt <- recursPredictExt(Rgrid, Rfilt[[4]], Lam[tvec], Rfilt[[3]], a, maxI = maxI)
+Ifilt <- recursPredict(Rgrid, Rfilt[[4]], Lam[tvec], Rfilt[[3]], a)
 # Ifilt: [pred, predci]
 
 # ---- 6. Run smoothing (retrospective, uses all data) -------------------
 Rsmooth <- epiSmoother(Rgrid, m, Rfilt[[4]], Rfilt[[5]], length(tvec), Rfilt[[6]], a)
 # Rsmooth: [Rmed, Rhatci, Rmean, qR]
 
-Ismooth <- recursPredictExt(Rgrid, Rsmooth[[4]], Lam[tvec], Rsmooth[[3]], a, maxI = maxI)
+Ismooth <- recursPredict(Rgrid, Rsmooth[[4]], Lam[tvec], Rsmooth[[3]], a)
 
 # ---- 6b. Genuine out-of-sample forecast: one week beyond the data -------
 # Unlike the in-sample one-step-ahead predictions above (every one of
@@ -136,7 +120,7 @@ pR_last <- Rfilt[[4]][nrow(Rfilt[[4]]), ]
 # Predictive distribution for next week's case count, marginalising the
 # Poisson renewal rate over the full current posterior on R (identical
 # logic to the inner loop of recursPredict.R, applied for one extra step)
-Igrid <- 0:maxI
+Igrid <- 0:800
 rate <- Lam_forecast * Rgrid
 pI <- sapply(Igrid, function(k) sum(dpois(k, rate) * pR_last))
 Fpred <- cumsum(pI) / sum(pI)
