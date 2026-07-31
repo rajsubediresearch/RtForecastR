@@ -4,6 +4,7 @@ output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{RtForecastR walkthrough}
   %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteDepends{rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 

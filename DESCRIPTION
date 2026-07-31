@@ -17,6 +17,7 @@ Description: Filtered (real-time/causal) and smoothed (retrospective)
     Bracher et al. (2021) <doi:10.1371/journal.pcbi.1008618>).
     Disease-agnostic: works for any pathogen given a known generation
     interval.
+Language: en-US
 License: GPL-3 + file LICENSE
 Encoding: UTF-8
 LazyData: true
