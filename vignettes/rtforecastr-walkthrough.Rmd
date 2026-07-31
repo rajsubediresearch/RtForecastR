@@ -1,0 +1,51 @@
+---
+title: "RtForecastR walkthrough"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{RtForecastR walkthrough}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", fig.width = 7, fig.height = 4.5)
+```
+
+```{r setup}
+library(RtForecastR)
+```
+
+## Fit R_t and get a forecast
+
+`rt_forecast()` estimates the filtered (real-time) and smoothed
+(retrospective) effective reproduction number from a case-count time
+series, and produces a genuine one-step-ahead out-of-sample forecast.
+
+```{r}
+data(measles_cdmx)
+fit <- rt_forecast(measles_cdmx$time, measles_cdmx$cases,
+                    mean_GI = 11/7, var_GI = (4/7)^2)
+fit
+```
+
+```{r}
+plot(fit, which = "Rt")
+```
+
+```{r}
+plot(fit, which = "forecast")
+```
+
+## Checking calibration
+
+`fit$predictions` holds in-sample one-step-ahead predictions - a quick
+adequacy check:
+
+```{r}
+mae(fit$predictions$cases, fit$predictions$pred_next)
+coverage(fit$predictions$cases, fit$predictions$pred_lo95, fit$predictions$pred_hi95)
+```
+
+For a genuine prospective evaluation, accumulate `fit$forecast` and the
+following week's actual case count over several weeks and pass the
+resulting quantile lists to `wis()`; see `?wis` and `?score_batches`.

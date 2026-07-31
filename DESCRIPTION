@@ -1,0 +1,37 @@
+Package: RtForecastR
+Type: Package
+Title: Real-Time Effective Reproduction Number Estimation and Forecasting
+Version: 0.1.0
+Authors@R: c(
+    person("Raj", "Subedi", email = "rajsubediresearch@gmail.com", role = c("aut", "cre")),
+    person("Kris V.", "Parag", role = c("ctb", "cph"),
+           comment = "Author of the original EpiFilter algorithm (epiFilter, epiSmoother, recursPredict); files R/epiFilter.R, R/epiSmoother.R and R/recursPredict.R are unmodified ports of that work"))
+Description: Filtered (real-time/causal) and smoothed (retrospective)
+    estimation of the time-varying effective reproduction number (Rt)
+    from case-count time series, using the EpiFilter algorithm of
+    Parag (2021) <doi:10.1371/journal.pcbi.1009347>, together with a
+    one-step-ahead in-sample prediction check, a genuine out-of-sample
+    one-step forecast with predictive intervals, elimination
+    probability P(Rt < 1), and forecast calibration metrics (MAE, MSE,
+    RMSE, empirical coverage, and the weighted interval score of
+    Bracher et al. (2021) <doi:10.1371/journal.pcbi.1008618>).
+    Disease-agnostic: works for any pathogen given a known generation
+    interval.
+License: GPL-3 + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Depends: R (>= 3.5)
+Imports:
+    graphics,
+    grDevices,
+    stats,
+    utils
+Suggests:
+    testthat (>= 3.0.0),
+    knitr,
+    rmarkdown
+Config/testthat/edition: 3
+RoxygenNote: 8.0.0
+VignetteBuilder: knitr
+URL: https://github.com/rajsubediresearch/RtForecastR
+BugReports: https://github.com/rajsubediresearch/RtForecastR/issues
