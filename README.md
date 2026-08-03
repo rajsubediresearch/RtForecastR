@@ -86,5 +86,8 @@ output is preserved on the `legacy-script` branch/tag for reference.
 
 ## License
 
-GPL-3 + file LICENSE (see LICENSE for attribution of the ported
-EpiFilter code).
+GPL-3. Copyright holders and their specific contributions are declared
+in `Authors@R` (see `DESCRIPTION`) - Kris V. Parag holds copyright on
+the unmodified/lightly modified EpiFilter files (`R/epiFilter.R`,
+`R/epiSmoother.R`, `R/recursPredict.R`'s original logic); Raj Subedi
+holds copyright on everything else.
