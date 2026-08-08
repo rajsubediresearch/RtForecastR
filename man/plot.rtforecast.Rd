@@ -12,22 +12,27 @@
 )
 }
 \arguments{
-\item{x}{an `"rtforecast"` object, as returned by [rt_forecast()]}
+\item{x}{an \code{"rtforecast"} object, as returned by \code{\link[=rt_forecast]{rt_forecast()}}}
 
-\item{which}{one of `"Rt"` (filtered vs smoothed R_t), `"forecast"`
+\item{which}{one of \code{"Rt"} (filtered vs smoothed R_t), \code{"forecast"}
 (recent observed/predicted cases + one-step forecast), or
-`"observed_vs_predicted"` (full-period observed vs in-sample
+\code{"observed_vs_predicted"} (full-period observed vs in-sample
 predicted + forecast)}
 
-\item{n_recent}{for `which = "forecast"`, how many recent time
+\item{n_recent}{for \code{which = "forecast"}, how many recent time
 points to show (default 8)}
 
-\item{...}{passed on to the underlying [graphics::plot()] call}
+\item{...}{passed on to the underlying \code{\link[graphics:plot]{graphics::plot()}} call}
+}
+\value{
+The input \code{"rtforecast"} object \code{x}, returned invisibly.
+Called primarily for its side effect of drawing to the current
+graphics device.
 }
 \description{
 Draws to the current graphics device (matches normal R plotting
-conventions - use [grDevices::png()]/[grDevices::pdf()] yourself
+conventions - use \code{\link[grDevices:png]{grDevices::png()}}/\code{\link[grDevices:pdf]{grDevices::pdf()}} yourself
 around the call if you want a file, the way you would for any base R
 plot). Ports the "current situation" view from the original
-`run_rtforecast.R` script.
+\code{run_rtforecast.R} script.
 }

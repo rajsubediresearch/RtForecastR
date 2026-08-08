@@ -1,11 +1,11 @@
 #' Bayesian recursive prediction with arbitrary quantile levels (internal)
 #'
 #' Generalizes [recurs_predict()] to report an arbitrary set of
-#' quantile levels rather than just 50\%/95\%, needed for the weighted
+#' quantile levels rather than just 50%/95%, needed for the weighted
 #' interval score ([wis()]). Same Poisson-renewal/posterior
 #' marginalisation logic; this only widens what's read off the
 #' already-computed CDF, so it never changes point predictions or the
-#' 50\%/95\% values a call to [recurs_predict()] would give, only how
+#' 50%/95% values a call to [recurs_predict()] would give, only how
 #' many quantiles are reported alongside them.
 #'
 #' Bracher J, Ray EL, Gneiting T, Reich NG. (2021) "Evaluating epidemic
@@ -18,7 +18,7 @@
 #' @param Rmean mean R estimate at each time point
 #' @param quantile_levels vector of probabilities in (0, 0.5), each
 #'   producing a nested (level, 1-level) interval. Default matches
-#'   [recurs_predict()]'s 50\%/95\% reporting; pass e.g.
+#'   [recurs_predict()]'s 50%/95% reporting; pass e.g.
 #'   `seq(0.05, 0.45, by = 0.05)` to add the levels a WIS calculation
 #'   typically wants.
 #' @param maxI upper bound of the internal prediction grid

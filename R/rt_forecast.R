@@ -9,8 +9,8 @@
 #' for your own pathogen via `mean_GI`/`var_GI`.
 #'
 #' Unlike a script, this returns an object rather than writing files -
-#' use [plot.rtforecast()] or [write_rtforecast()] if you want the
-#' plots/CSVs `run_rtforecast.R` used to write directly.
+#' use [plot.rtforecast()] if you want the plots `run_rtforecast.R`
+#' used to write directly.
 #'
 #' @param time numeric vector of time indices (e.g. epi weeks)
 #' @param cases numeric vector of case counts, same length as `time`
@@ -21,11 +21,11 @@
 #' @param grid_size number of points in the R_t grid (default 200)
 #' @param eta diffusion (state) noise controlling smoothness of R_t (default 0.1)
 #' @param ci_level tail probability defining the reported main credible
-#'   interval (default 0.025, i.e. a 95\% interval)
+#'   interval (default 0.025, i.e. a 95% interval)
 #' @param quantile_levels additional quantile levels (each in (0, 0.5))
 #'   to compute for the out-of-sample forecast, used by [wis()]. Default
 #'   adds the levels a standard 11-interval WIS wants; set to `NULL` to
-#'   skip and only compute the 50\%/95\% forecast interval.
+#'   skip and only compute the 50%/95% forecast interval.
 #' @param maxI upper bound of the internal prediction grid; if `NULL`
 #'   (default) it's set automatically to `3 * max(cases)` (minimum 2000)
 #' @return an object of class `"rtforecast"`: a list with elements

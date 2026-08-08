@@ -1,11 +1,24 @@
 ## Submission
 
-This is a resubmission. Per Uwe Ligges' feedback on the first
-submission, "+ file LICENSE" has been removed from the License field
-and the LICENSE file itself has been deleted; copyright-holder
-attribution now lives entirely in Authors@R (Kris V. Parag as
-ctb/cph for the ported EpiFilter files, Raj Subedi as aut/cre/cph for
-everything else), as instructed.
+This is a resubmission addressing Konstanze Lauseker's feedback on the
+prior submission:
+* All acronyms in the Description field are now spelled out (mean
+  absolute error, mean squared error, root mean squared error, in
+  place of MAE/MSE/RMSE).
+* plot.rtforecast.Rd now has a \value tag documenting its (invisible)
+  return value.
+
+While fixing these, markdown-style roxygen (`Roxygen: list(markdown =
+TRUE)`) was found to have never actually been enabled in DESCRIPTION,
+despite every roxygen comment in the package using markdown syntax -
+so none of it was being converted to proper \code{}/\link{} Rd markup
+anywhere in the package (it was rendering as literal backticks and
+square brackets). This is now fixed and regenerated across all man
+pages; in the process, two dangling cross-references to
+functions/filenames that don't exist under those names
+(epiFilter()/epiSmoother() instead of the actual epi_filter()/
+epi_smoother(), and a leftover reference to a write_rtforecast()
+function that was never implemented) were also found and corrected.
 
 ## Test environments
 
@@ -14,9 +27,11 @@ everything else), as instructed.
   ubuntu-latest (devel, release, oldrel-1)
 * win-builder (release; devel upload repeatedly failed with a
   server-side FTP error unrelated to this package - R-devel is
-  independently verified via R-hub's linux platform below)
+  independently verified via R-hub's linux platform and via CRAN's
+  own incoming pretest, both of which passed)
 * R-hub (linux, macos-arm64, windows, donttest, nosuggests,
   ubuntu-release)
+* CRAN's own incoming pretest (Windows and Debian, R-devel)
 
 ## R CMD check results
 

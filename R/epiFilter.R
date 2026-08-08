@@ -21,8 +21,8 @@
 #' @param Lday total infectiousness at each time point (see [compute_lambda()])
 #' @param Iday incidence at each time point
 #' @param a tail probability defining the reported credible interval
-#'   (e.g. 0.025 for a 95\% interval)
-#' @return list(Rmed, Rhat, Rmean, pR, pRup, pstate): median, 50\%/95\%
+#'   (e.g. 0.025 for a 95% interval)
+#' @return list(Rmed, Rhat, Rmean, pR, pRup, pstate): median, 50%/95%
 #'   quantiles, mean, causal posterior over R, pre-update posterior,
 #'   and the precomputed state-transition matrix
 #' @keywords internal

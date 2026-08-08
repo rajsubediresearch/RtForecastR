@@ -7,13 +7,13 @@
 \format{
 A data frame with columns:
 \describe{
-  \item{time}{integer, weekly time index}
-  \item{cases}{integer, case count for that week}
+\item{time}{integer, weekly time index}
+\item{cases}{integer, case count for that week}
 }
 }
 \source{
 Worked example shipped with RtForecastR; not an official
-  surveillance release.
+surveillance release.
 }
 \usage{
 measles_cdmx
@@ -21,7 +21,7 @@ measles_cdmx
 \description{
 A two-column weekly case-count series used as the package's worked
 example. Time is a weekly index, not a calendar date; see
-`vignette("rtforecastr-walkthrough")` for the recommended
-`mean_GI`/`var_GI` values to use with this series.
+\code{vignette("rtforecastr-walkthrough")} for the recommended
+\code{mean_GI}/\code{var_GI} values to use with this series.
 }
 \keyword{datasets}

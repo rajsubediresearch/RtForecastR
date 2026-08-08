@@ -14,6 +14,9 @@
 #' @param n_recent for `which = "forecast"`, how many recent time
 #'   points to show (default 8)
 #' @param ... passed on to the underlying [graphics::plot()] call
+#' @return The input `"rtforecast"` object `x`, returned invisibly.
+#'   Called primarily for its side effect of drawing to the current
+#'   graphics device.
 #' @export
 plot.rtforecast <- function(x, which = c("Rt", "forecast", "observed_vs_predicted"),
                              n_recent = 8, ...){

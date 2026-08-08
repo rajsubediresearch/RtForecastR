@@ -7,20 +7,20 @@
 \format{
 A data frame with columns:
 \describe{
-  \item{time}{integer, weekly time index}
-  \item{cases}{integer, case count for that week}
+\item{time}{integer, weekly time index}
+\item{cases}{integer, case count for that week}
 }
 }
 \source{
 Worked example shipped with RtForecastR; not an official
-  surveillance release.
+surveillance release.
 }
 \usage{
 jalisco
 }
 \description{
 A second worked example with a larger peak incidence than
-[measles_cdmx], useful for exercising the `maxI` prediction-grid
-argument of [rt_forecast()].
+\link{measles_cdmx}, useful for exercising the \code{maxI} prediction-grid
+argument of \code{\link[=rt_forecast]{rt_forecast()}}.
 }
 \keyword{datasets}

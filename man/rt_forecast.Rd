@@ -21,10 +21,10 @@ rt_forecast(
 \arguments{
 \item{time}{numeric vector of time indices (e.g. epi weeks)}
 
-\item{cases}{numeric vector of case counts, same length as `time`}
+\item{cases}{numeric vector of case counts, same length as \code{time}}
 
 \item{mean_GI}{mean generation interval, in the same time units as
-`time` (e.g. weeks if your data is weekly)}
+\code{time} (e.g. weeks if your data is weekly)}
 
 \item{var_GI}{variance of the generation interval, same time units}
 
@@ -38,20 +38,20 @@ rt_forecast(
 interval (default 0.025, i.e. a 95\% interval)}
 
 \item{quantile_levels}{additional quantile levels (each in (0, 0.5))
-to compute for the out-of-sample forecast, used by [wis()]. Default
-adds the levels a standard 11-interval WIS wants; set to `NULL` to
+to compute for the out-of-sample forecast, used by \code{\link[=wis]{wis()}}. Default
+adds the levels a standard 11-interval WIS wants; set to \code{NULL} to
 skip and only compute the 50\%/95\% forecast interval.}
 
-\item{maxI}{upper bound of the internal prediction grid; if `NULL`
-(default) it's set automatically to `3 * max(cases)` (minimum 2000)}
+\item{maxI}{upper bound of the internal prediction grid; if \code{NULL}
+(default) it's set automatically to \code{3 * max(cases)} (minimum 2000)}
 }
 \value{
-an object of class `"rtforecast"`: a list with elements
-  `results` (per-time R_t estimates and elimination probability),
-  `predictions` (in-sample one-step-ahead predictions), `forecast`
-  (the one-step-ahead out-of-sample forecast, with a `quantiles`
-  element if `quantile_levels` was set), and the raw filter/smoother
-  objects for advanced use.
+an object of class \code{"rtforecast"}: a list with elements
+\code{results} (per-time R_t estimates and elimination probability),
+\code{predictions} (in-sample one-step-ahead predictions), \code{forecast}
+(the one-step-ahead out-of-sample forecast, with a \code{quantiles}
+element if \code{quantile_levels} was set), and the raw filter/smoother
+objects for advanced use.
 }
 \description{
 Fits filtered (real-time/causal) and smoothed (retrospective) R_t
@@ -60,12 +60,12 @@ estimates to a case-count time series using the EpiFilter algorithm
 adequacy check), a genuine out-of-sample one-step forecast with
 predictive intervals, and the elimination probability P(R_t < 1) at
 every time point. Disease-agnostic: supply the generation interval
-for your own pathogen via `mean_GI`/`var_GI`.
+for your own pathogen via \code{mean_GI}/\code{var_GI}.
 }
 \details{
 Unlike a script, this returns an object rather than writing files -
-use [plot.rtforecast()] or [write_rtforecast()] if you want the
-plots/CSVs `run_rtforecast.R` used to write directly.
+use \code{\link[=plot.rtforecast]{plot.rtforecast()}} if you want the plots \code{run_rtforecast.R}
+used to write directly.
 }
 \examples{
 data(measles_cdmx)

@@ -13,9 +13,10 @@ Description: Filtered (real-time/causal) and smoothed (retrospective)
     Parag (2021) <doi:10.1371/journal.pcbi.1009347>, together with a
     one-step-ahead in-sample prediction check, a genuine out-of-sample
     one-step forecast with predictive intervals, elimination
-    probability P(Rt < 1), and forecast calibration metrics (MAE, MSE,
-    RMSE, empirical coverage, and the weighted interval score of
-    Bracher et al. (2021) <doi:10.1371/journal.pcbi.1008618>).
+    probability P(Rt < 1), and forecast calibration metrics (mean
+    absolute error, mean squared error, root mean squared error,
+    empirical coverage, and the weighted interval score of Bracher
+    et al. (2021) <doi:10.1371/journal.pcbi.1008618>).
     Disease-agnostic: works for any pathogen given a known generation
     interval.
 Language: en-US
@@ -34,6 +35,7 @@ Suggests:
     rmarkdown
 Config/testthat/edition: 3
 RoxygenNote: 8.0.0
+Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr
 URL: https://github.com/rajsubediresearch/RtForecastR
 BugReports: https://github.com/rajsubediresearch/RtForecastR/issues

@@ -17,7 +17,7 @@ epi_filter(Rgrid, m, eta, pR0, nday, Lday, Iday, a)
 
 \item{nday}{number of time points}
 
-\item{Lday}{total infectiousness at each time point (see [compute_lambda()])}
+\item{Lday}{total infectiousness at each time point (see \code{\link[=compute_lambda]{compute_lambda()}})}
 
 \item{Iday}{incidence at each time point}
 
@@ -26,8 +26,8 @@ epi_filter(Rgrid, m, eta, pR0, nday, Lday, Iday, a)
 }
 \value{
 list(Rmed, Rhat, Rmean, pR, pRup, pstate): median, 50\%/95\%
-  quantiles, mean, causal posterior over R, pre-update posterior,
-  and the precomputed state-transition matrix
+quantiles, mean, causal posterior over R, pre-update posterior,
+and the precomputed state-transition matrix
 }
 \description{
 Unmodified port of the EpiFilter causal (real-time) filtering

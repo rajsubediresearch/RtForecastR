@@ -9,7 +9,7 @@ recurs_predict(Rgrid, pR, Lday, Rmean, a, maxI = 800)
 \arguments{
 \item{Rgrid}{grid on reproduction numbers}
 
-\item{pR}{posterior over R (filtered or smoothed), from [epi_filter()]/[epi_smoother()]}
+\item{pR}{posterior over R (filtered or smoothed), from \code{\link[=epi_filter]{epi_filter()}}/\code{\link[=epi_smoother]{epi_smoother()}}}
 
 \item{Lday}{total infectiousness at each time point}
 
@@ -22,13 +22,13 @@ comfortably above the data's peak incidence}
 }
 \value{
 list(pred, predInt): mean one-step-ahead prediction, and a
-  4 x (n-1) matrix of quantiles (rows: lo95, hi95, lo50, hi50)
+4 x (n-1) matrix of quantiles (rows: lo95, hi95, lo50, hi50)
 }
 \description{
-Modified from the original `recursPredict.R` (Parag KV, EpiFilter):
-the original hardcodes its internal prediction grid to `0:800` and
+Modified from the original \code{recursPredict.R} (Parag KV, EpiFilter):
+the original hardcodes its internal prediction grid to \code{0:800} and
 errors out if any predicted mean incidence exceeds 720. This version
-takes the grid's upper bound as a parameter (`maxI`) instead, so it
+takes the grid's upper bound as a parameter (\code{maxI}) instead, so it
 doesn't break on larger outbreaks. The Poisson-renewal/quantile
 logic is otherwise unchanged from the original.
 }

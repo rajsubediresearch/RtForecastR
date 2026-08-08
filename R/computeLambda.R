@@ -2,8 +2,8 @@
 #'
 #' Computes the "total infectiousness" Lambda_t: the convolution of
 #' past incidence with a discretized Gamma(mean, variance) generation
-#' interval distribution, as required by [epiFilter()] and
-#' [epiSmoother()] alongside raw incidence. Written to avoid a
+#' interval distribution, as required by [epi_filter()] and
+#' [epi_smoother()] alongside raw incidence. Written to avoid a
 #' dependency on the EpiEstim package's `overall_infectivity()` for
 #' this single step.
 #'

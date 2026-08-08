@@ -14,12 +14,12 @@ available) point predictions, length T}
 
 \item{quantiles}{a named list, as returned by
 \code{rt_forecast()$forecast_quantiles} or directly from
-[recurs_predict_quantiles()]$quantiles: each element is a 2 x T
+\code{\link[=recurs_predict_quantiles]{recurs_predict_quantiles()}}$quantiles: each element is a 2 x T
 matrix with rows lo/hi for a (level, 1-level) interval.}
 }
 \value{
 a data.frame with per-time-point WIS and its components,
-  plus the overall mean WIS as an attribute (\code{"mean_wis"})
+plus the overall mean WIS as an attribute (\code{"mean_wis"})
 }
 \description{
 Bracher J, Ray EL, Gneiting T, Reich NG. (2021) "Evaluating epidemic

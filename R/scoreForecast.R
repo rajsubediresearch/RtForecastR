@@ -79,7 +79,7 @@ coverage <- function(observed, lo, hi){
 #'
 #' @param observed realized value
 #' @param lo,hi interval bounds
-#' @param level the interval's alpha (e.g. 0.025 for a 95\% interval)
+#' @param level the interval's alpha (e.g. 0.025 for a 95% interval)
 #' @return a single numeric value (lower is better)
 #' @examples
 #' interval_score(observed = 5, lo = 2, hi = 8, level = 0.05)
@@ -167,7 +167,7 @@ wis <- function(observed, median_pred, quantiles){
 #' @param revision \code{"first"} or \code{"latest"} - see above
 #' @return a data.frame, one row per batch whose forecast has since been
 #'   realized, with location, time, forecast, actual, and per-point
-#'   MAE/coverage (95\% and 50\%) columns.
+#'   MAE/coverage (95% and 50%) columns.
 #' @export
 score_batches <- function(root_dir, revision = c("first", "latest")){
   revision <- match.arg(revision)

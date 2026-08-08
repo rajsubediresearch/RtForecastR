@@ -24,24 +24,24 @@ recurs_predict_quantiles(
 
 \item{quantile_levels}{vector of probabilities in (0, 0.5), each
 producing a nested (level, 1-level) interval. Default matches
-[recurs_predict()]'s 50\%/95\% reporting; pass e.g.
-`seq(0.05, 0.45, by = 0.05)` to add the levels a WIS calculation
+\code{\link[=recurs_predict]{recurs_predict()}}'s 50\%/95\% reporting; pass e.g.
+\code{seq(0.05, 0.45, by = 0.05)} to add the levels a WIS calculation
 typically wants.}
 
 \item{maxI}{upper bound of the internal prediction grid}
 }
 \value{
 list(pred, quantiles): mean one-step-ahead prediction, and a
-  named list where `quantiles[[as.character(level)]]` is a 2 x (n-1)
-  matrix with rows lo/hi for that (level, 1-level) interval
+named list where \code{quantiles[[as.character(level)]]} is a 2 x (n-1)
+matrix with rows lo/hi for that (level, 1-level) interval
 }
 \description{
-Generalizes [recurs_predict()] to report an arbitrary set of
+Generalizes \code{\link[=recurs_predict]{recurs_predict()}} to report an arbitrary set of
 quantile levels rather than just 50\%/95\%, needed for the weighted
-interval score ([wis()]). Same Poisson-renewal/posterior
+interval score (\code{\link[=wis]{wis()}}). Same Poisson-renewal/posterior
 marginalisation logic; this only widens what's read off the
 already-computed CDF, so it never changes point predictions or the
-50\%/95\% values a call to [recurs_predict()] would give, only how
+50\%/95\% values a call to \code{\link[=recurs_predict]{recurs_predict()}} would give, only how
 many quantiles are reported alongside them.
 }
 \details{

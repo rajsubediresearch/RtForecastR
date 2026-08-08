@@ -16,7 +16,7 @@
 #' @param nday number of time points
 #' @param pstate state-transition matrix, from [epi_filter()]
 #' @param a tail probability defining the reported credible interval
-#' @return list(Rmed, Rhat, Rmean, qR): median, 50\%/95\% quantiles,
+#' @return list(Rmed, Rhat, Rmean, qR): median, 50%/95% quantiles,
 #'   mean, and the smoothed (backward+forward) posterior over R
 #' @keywords internal
 epi_smoother <- function(Rgrid, m, pR, pRup, nday, pstate, a){

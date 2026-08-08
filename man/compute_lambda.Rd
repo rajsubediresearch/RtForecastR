@@ -10,28 +10,28 @@ compute_lambda(incidence, mean_GI, var_GI, max_si = NULL)
 \item{incidence}{numeric vector of case counts, length n}
 
 \item{mean_GI}{mean generation interval, in the same time units as
-`incidence` (e.g. weeks if `incidence` is weekly)}
+\code{incidence} (e.g. weeks if \code{incidence} is weekly)}
 
 \item{var_GI}{variance of the generation interval, same time units}
 
 \item{max_si}{maximum serial interval to consider (defaults to
-`length(incidence) - 1`)}
+\code{length(incidence) - 1})}
 }
 \value{
-numeric vector of length n; `Lambda[1]` is `NA` (no prior
-  incidence exists to convolve with)
+numeric vector of length n; \code{Lambda[1]} is \code{NA} (no prior
+incidence exists to convolve with)
 }
 \description{
 Computes the "total infectiousness" Lambda_t: the convolution of
 past incidence with a discretized Gamma(mean, variance) generation
-interval distribution, as required by [epiFilter()] and
-[epiSmoother()] alongside raw incidence. Written to avoid a
-dependency on the EpiEstim package's `overall_infectivity()` for
+interval distribution, as required by \code{\link[=epi_filter]{epi_filter()}} and
+\code{\link[=epi_smoother]{epi_smoother()}} alongside raw incidence. Written to avoid a
+dependency on the EpiEstim package's \code{overall_infectivity()} for
 this single step.
 }
 \details{
 The Gamma(mean, variance) discretization approach follows the
-convention used in `get_Rt.m`, part of the GrowthPredict toolbox:
+convention used in \code{get_Rt.m}, part of the GrowthPredict toolbox:
 Chowell G, Bleichrodt A, Dahal S, Tariq A, Roosa K, Hyman JM, Luo R.
 (2024) "GrowthPredict: A toolbox and tutorial-based primer for
 fitting and forecasting growth trajectories using phenomenological

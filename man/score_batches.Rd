@@ -14,13 +14,13 @@ folders (e.g. \code{"output"})}
 }
 \value{
 a data.frame, one row per batch whose forecast has since been
-  realized, with location, time, forecast, actual, and per-point
-  MAE/coverage (95\% and 50\%) columns.
+realized, with location, time, forecast, actual, and per-point
+MAE/coverage (95\% and 50\%) columns.
 }
 \description{
 Recursively finds every \verb{asof_week*/epifilter_forecast_next_week.csv}
 under \code{root_dir} and matches each batch's one-week-ahead forecast to
-the actual case count once it appears as an observed row in a *later*
+the actual case count once it appears as an observed row in a \emph{later}
 batch's \code{epifilter_results.csv} - i.e. this scores genuine
 prospective (not in-sample) forecast performance over time.
 }
@@ -35,7 +35,7 @@ revised count available.
 
 This function is a filesystem helper for scoring output produced by the
 standalone \code{run_rtforecast.R} script's weekly batch folders. If
-you're using [rt_forecast()] directly in R (recommended for new code),
+you're using \code{\link[=rt_forecast]{rt_forecast()}} directly in R (recommended for new code),
 accumulate a data.frame of your own forecasts/actuals across weeks and
-use [mae()], [coverage()], and [wis()] directly instead.
+use \code{\link[=mae]{mae()}}, \code{\link[=coverage]{coverage()}}, and \code{\link[=wis]{wis()}} directly instead.
 }

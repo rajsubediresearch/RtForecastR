@@ -11,23 +11,23 @@ epi_smoother(Rgrid, m, pR, pRup, nday, pstate, a)
 
 \item{m}{size of Rgrid}
 
-\item{pR}{filtered (causal) posterior over R, from [epi_filter()]}
+\item{pR}{filtered (causal) posterior over R, from \code{\link[=epi_filter]{epi_filter()}}}
 
-\item{pRup}{pre-update posterior, from [epi_filter()]}
+\item{pRup}{pre-update posterior, from \code{\link[=epi_filter]{epi_filter()}}}
 
 \item{nday}{number of time points}
 
-\item{pstate}{state-transition matrix, from [epi_filter()]}
+\item{pstate}{state-transition matrix, from \code{\link[=epi_filter]{epi_filter()}}}
 
 \item{a}{tail probability defining the reported credible interval}
 }
 \value{
 list(Rmed, Rhat, Rmean, qR): median, 50\%/95\% quantiles,
-  mean, and the smoothed (backward+forward) posterior over R
+mean, and the smoothed (backward+forward) posterior over R
 }
 \description{
 Unmodified port of the EpiFilter retrospective (smoothed) estimation
-algorithm. Must be run after [epi_filter()], using its outputs.
+algorithm. Must be run after \code{\link[=epi_filter]{epi_filter()}}, using its outputs.
 }
 \details{
 From: Parag KV. (2021) "Improved estimation of time-varying
