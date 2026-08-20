@@ -18,6 +18,22 @@ test_that("rt_forecast handles a larger-incidence series via maxI", {
   expect_true(!is.null(fit$forecast_quantiles))
 })
 
+test_that("forecast_quantiles exactly matches fit$forecast at the 95% and 50% levels", {
+  # Regression test for a bug where forecast_quantiles was computed from
+  # a disconnected in-sample calculation rather than the same
+  # distribution used for fit$forecast itself.
+  data(measles_cdmx)
+  fit <- rt_forecast(measles_cdmx$time, measles_cdmx$cases,
+                      mean_GI = 11/7, var_GI = (4/7)^2)
+  expect_equal(as.numeric(fit$forecast_quantiles[["0.025"]]),
+               c(fit$forecast$lo95, fit$forecast$hi95))
+  expect_equal(as.numeric(fit$forecast_quantiles[["0.25"]]),
+               c(fit$forecast$lo50, fit$forecast$hi50))
+  # no duplicate levels
+  expect_equal(length(names(fit$forecast_quantiles)),
+               length(unique(names(fit$forecast_quantiles))))
+})
+
 test_that("rt_forecast errors on mismatched input lengths", {
   expect_error(rt_forecast(1:5, 1:4, mean_GI = 1, var_GI = 1))
 })

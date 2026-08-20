@@ -92,14 +92,19 @@ rt_forecast <- function(time, cases, mean_GI, var_GI,
 
   forecast_quantiles <- NULL
   if (!is.null(quantile_levels) && length(quantile_levels) > 0){
-    Ifilt_q <- recurs_predict_quantiles(Rgrid, Rfilt$pR, Lam[tvec], Rfilt$Rmean,
-                                         quantile_levels = c(a, 0.25, quantile_levels), maxI = maxI)
-    forecast_quantiles <- lapply(Ifilt_q$quantiles, function(mat) mat[, ncol(mat)])
-    # Also expose the full forecast distribution for the single next
-    # time point, useful for a custom WIS calculation at the forecast
-    # horizon itself
-    pI_all <- sapply(seq(0, 1, length.out = length(quantile_levels)+2)[-c(1, length(quantile_levels)+2)],
-                      function(p) Igrid[which(Fpred >= p)[1]])
+    # Derived directly from Fpred/Igrid above - the exact same forecast
+    # distribution that produced forecast_mean/lo95/hi95/lo50/hi50, so
+    # forecast_quantiles[["0.025"]] is guaranteed identical to
+    # c(forecast$lo95, forecast$hi95), etc. Previously this used a
+    # separate in-sample calculation that did not correspond to the
+    # true one-step-ahead forecast point; fixed in 0.1.1.
+    all_levels <- sort(unique(c(a, 0.25, quantile_levels)))
+    forecast_quantiles <- lapply(all_levels, function(lev){
+      lo <- Igrid[which(Fpred >= lev)[1]]
+      hi <- Igrid[which(Fpred >= 1 - lev)[1]]
+      c(lo, hi)
+    })
+    names(forecast_quantiles) <- as.character(all_levels)
   }
 
   # Elimination probability: P(R_t < 1) at each time point

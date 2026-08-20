@@ -1,7 +1,7 @@
 Package: RtForecastR
 Type: Package
 Title: Real-Time Effective Reproduction Number Estimation and Forecasting
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: c(
     person("Raj", "Subedi", email = "rajsubediresearch@gmail.com", role = c("aut", "cre", "cph"),
            comment = "Copyright holder for all files except epiFilter.R, epiSmoother.R, and the original recursPredict.R logic (see Kris V. Parag entry); author of R/recursPredict.R's configurable-grid maxI extension and R/recursPredictQuantiles.R"),
