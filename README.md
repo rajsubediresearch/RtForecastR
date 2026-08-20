@@ -1,6 +1,7 @@
 # RtForecastR
 
 <!-- badges: start -->
+[![CRAN status](https://www.r-pkg.org/badges/version/RtForecastR)](https://CRAN.R-project.org/package=RtForecastR)
 [![R-CMD-check](https://github.com/rajsubediresearch/RtForecastR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/rajsubediresearch/RtForecastR/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
@@ -12,11 +13,15 @@ generation interval.
 ## Installation
 
 ```r
+install.packages("RtForecastR")
+```
+
+The development version can be installed from GitHub:
+
+```r
 # install.packages("remotes")
 remotes::install_github("rajsubediresearch/RtForecastR")
 ```
-
-(Once accepted on CRAN: `install.packages("RtForecastR")`.)
 
 ## Usage
 
@@ -33,7 +38,8 @@ plot(fit, which = "forecast")
 
 See `vignette("rtforecastr-walkthrough")` for the full walkthrough,
 and `?rt_forecast`, `?wis`, `?score_batches` for calibration/forecast
-scoring (MAE, MSE, RMSE, empirical coverage, weighted interval score).
+scoring (mean absolute error, mean squared error, root mean squared
+error, empirical coverage, weighted interval score).
 
 ## What it does
 
@@ -44,8 +50,9 @@ scoring (MAE, MSE, RMSE, empirical coverage, weighted interval score).
 - A genuine out-of-sample forecast one time-step beyond your most
   recent data point, with 50%/95% predictive intervals
 - Elimination probability, P(R_t < 1), at every time point
-- Forecast calibration metrics: MAE, MSE, RMSE, empirical coverage,
-  and the weighted interval score (WIS)
+- Forecast calibration metrics: mean absolute error, mean squared
+  error, root mean squared error, empirical coverage, and the
+  weighted interval score (WIS)
 
 ## Attribution
 
@@ -82,7 +89,7 @@ is original work by Raj Subedi, built on top of the above.
 
 This package supersedes an earlier script-based version of the same
 tool (`run_rtforecast.R` + `core/*.R`). That version's archived weekly
-output is preserved on the `legacy-script` branch/tag for reference.
+output is preserved on the `pre-package-v0` tag for reference.
 
 ## License
 
