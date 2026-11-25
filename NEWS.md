@@ -1,3 +1,5 @@
+# RtForecastR (development version)
+
 # RtForecastR 0.1.2
 
 * Documentation: `?rt_forecast` now correctly states the automatic `maxI`
