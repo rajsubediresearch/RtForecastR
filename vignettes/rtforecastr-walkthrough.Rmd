@@ -47,6 +47,10 @@ mae(fit$predictions$cases, fit$predictions$pred_next)
 coverage(fit$predictions$cases, fit$predictions$pred_lo95, fit$predictions$pred_hi95)
 ```
 
-For a genuine prospective evaluation, accumulate `fit$forecast` and the
-following week's actual case count over several weeks and pass the
-resulting quantile lists to `wis()`; see `?wis` and `?score_batches`.
+This is not genuine forecast validation, since the model has already
+seen nearby data. For that, run a rolling backtest: refit on data up to
+each week, forecast the next week, and score those forecasts against what
+was later observed with `mae()`, `coverage()` and `wis()` (using
+`fit$forecast_quantiles`). A complete worked backtest, with interpretation
+and cautions, is in the companion tutorial:
+<https://github.com/rajsubediresearch/RtForecastR-tutorial>.

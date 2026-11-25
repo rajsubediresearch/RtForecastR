@@ -27,13 +27,18 @@
 #'   adds the levels a standard 11-interval WIS wants; set to `NULL` to
 #'   skip and only compute the 50%/95% forecast interval.
 #' @param maxI upper bound of the internal prediction grid; if `NULL`
-#'   (default) it's set automatically to `3 * max(cases)` (minimum 2000)
+#'   (default) it's set automatically to `3 * max(cases)` (minimum 50)
 #' @return an object of class `"rtforecast"`: a list with elements
-#'   `results` (per-time R_t estimates and elimination probability),
-#'   `predictions` (in-sample one-step-ahead predictions), `forecast`
-#'   (the one-step-ahead out-of-sample forecast, with a `quantiles`
-#'   element if `quantile_levels` was set), and the raw filter/smoother
-#'   objects for advanced use.
+#'   `results` (per-time filtered and smoothed R_t estimates with 95%
+#'   credible intervals, and elimination probability P(R_t < 1)),
+#'   `predictions` (in-sample one-step-ahead predictions with 50%/95%
+#'   intervals), `forecast` (a one-row data frame: the out-of-sample
+#'   forecast one step beyond the data, with 50%/95% intervals and the
+#'   R_t used), `forecast_quantiles` (a named list of `c(lo, hi)` pairs
+#'   for that same forecast at each requested level, for use with
+#'   [wis()]; `NULL` if `quantile_levels = NULL`), `call_args` (the
+#'   settings used, including the resolved `maxI`), and `raw` (the
+#'   underlying filter/smoother objects, for advanced use).
 #' @examples
 #' data(measles_cdmx)
 #' fit <- rt_forecast(measles_cdmx$time, measles_cdmx$cases,

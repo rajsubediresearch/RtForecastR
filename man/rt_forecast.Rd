@@ -43,15 +43,20 @@ adds the levels a standard 11-interval WIS wants; set to \code{NULL} to
 skip and only compute the 50\%/95\% forecast interval.}
 
 \item{maxI}{upper bound of the internal prediction grid; if \code{NULL}
-(default) it's set automatically to \code{3 * max(cases)} (minimum 2000)}
+(default) it's set automatically to \code{3 * max(cases)} (minimum 50)}
 }
 \value{
 an object of class \code{"rtforecast"}: a list with elements
-\code{results} (per-time R_t estimates and elimination probability),
-\code{predictions} (in-sample one-step-ahead predictions), \code{forecast}
-(the one-step-ahead out-of-sample forecast, with a \code{quantiles}
-element if \code{quantile_levels} was set), and the raw filter/smoother
-objects for advanced use.
+\code{results} (per-time filtered and smoothed R_t estimates with 95\%
+credible intervals, and elimination probability P(R_t < 1)),
+\code{predictions} (in-sample one-step-ahead predictions with 50\%/95\%
+intervals), \code{forecast} (a one-row data frame: the out-of-sample
+forecast one step beyond the data, with 50\%/95\% intervals and the
+R_t used), \code{forecast_quantiles} (a named list of \code{c(lo, hi)} pairs
+for that same forecast at each requested level, for use with
+\code{\link[=wis]{wis()}}; \code{NULL} if \code{quantile_levels = NULL}), \code{call_args} (the
+settings used, including the resolved \code{maxI}), and \code{raw} (the
+underlying filter/smoother objects, for advanced use).
 }
 \description{
 Fits filtered (real-time/causal) and smoothed (retrospective) R_t

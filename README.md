@@ -41,6 +41,14 @@ and `?rt_forecast`, `?wis`, `?score_batches` for calibration/forecast
 scoring (mean absolute error, mean squared error, root mean squared
 error, empirical coverage, weighted interval score).
 
+## Tutorial
+
+A full, runnable walkthrough (fitting, plots, elimination probability,
+your own data, rolling backtest with WIS scoring, and modeling cautions)
+is available as a Google Colab notebook:
+[RtForecastR-tutorial](https://github.com/rajsubediresearch/RtForecastR-tutorial)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rajsubediresearch/RtForecastR-tutorial/blob/main/RtForecastR_tutorial.ipynb)
+
 ## What it does
 
 - Filtered (real-time/causal) and smoothed (retrospective) R_t

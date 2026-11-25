@@ -1,3 +1,12 @@
+# RtForecastR (development version)
+
+* Documentation: `?rt_forecast` now correctly states the automatic `maxI`
+  minimum (50, not 2000) and accurately describes every element of the
+  returned object, including `forecast_quantiles` and `call_args`.
+* Vignette now explains why the in-sample check is not forecast
+  validation and links to the companion Colab tutorial.
+* README links the Colab tutorial.
+
 # RtForecastR 0.1.1
 
 * Bug fix: `rt_forecast()`'s `forecast_quantiles` element (used for
