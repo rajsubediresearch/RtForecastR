@@ -1,20 +1,26 @@
 ## Submission
 
-This is a patch release (0.1.1) fixing a correctness bug found after
-0.1.0's acceptance: `rt_forecast()`'s `forecast_quantiles` element
-(intended for weighted interval score calculations via `wis()`) was
-computed from a disconnected in-sample calculation that did not
-correspond to the genuine out-of-sample forecast reported in
-`fit$forecast`. It now derives from the same forecast distribution, so
-`forecast_quantiles` is guaranteed consistent with `fit$forecast`. A
-regression test now covers this. See NEWS.md for details.
+This is a documentation-only update (0.1.2). No code changes.
 
-No user-facing API changes; no new dependencies.
+* `?rt_forecast` now states the correct automatic `maxI` minimum (50; the
+  help page previously said 2000, which did not match the code) and
+  describes every element of the returned object, including
+  `forecast_quantiles` and `call_args`.
+* The vignette explains why the in-sample check is not forecast
+  validation and links to a companion tutorial.
+
+It has been about three months since the 0.1.1 release.
 
 ## Test environments
 
-* local Windows 11, R 4.6.1
-* R CMD check --as-cran: 0 errors, 0 warnings, 0 notes
+* local macOS (aarch64), R 4.6.1
+* GitHub Actions: windows-latest, macos-latest, ubuntu-latest
+  (devel, release, oldrel-1)
+* win-builder (R-devel)
+
+## R CMD check results
+
+0 errors | 0 warnings | 0 notes
 
 ## Downstream dependencies
 
